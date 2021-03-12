@@ -1,0 +1,7 @@
+{
+  "name": "magensonde",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
