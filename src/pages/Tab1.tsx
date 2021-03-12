@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { IonContent, IonIcon, IonText, IonPage, IonRange, IonList, IonRadioGroup, IonListHeader, IonLabel, IonItem, IonRadio, IonItemDivider, IonSelect, IonSelectOption, IonButton, IonImg } from '@ionic/react';
 import { barbellOutline, accessibilityOutline, heartOutline } from 'ionicons/icons';
 import { useHistory } from 'react-router';
-import workOut from '../assets/workout.svg';
+import workOutSvg from '../assets/workout.svg';
+import bikeSvg from '../assets/bike.svg';
 
 const Tab1: React.FC = () => {
 
@@ -10,8 +11,8 @@ const Tab1: React.FC = () => {
   const history = useHistory();
   return (
     <IonPage>
-      <IonContent>
-      <IonImg style={{width:'50%', display: 'auto', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px'}} src={workOut}></IonImg>
+      <IonContent className='fade-in'>
+      <IonImg style={{width:'10em', hegiht: '10em', display: 'auto', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px'}} src={selected === 'hombre' ?  bikeSvg : workOutSvg}></IonImg>
         <IonList>
           <IonItemDivider> Harris Benedict</IonItemDivider>
          
