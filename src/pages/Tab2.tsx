@@ -10,9 +10,9 @@ const Tab2: React.FC = () => {
       <IonItemDivider>Necesidades Energeticas</IonItemDivider>
       <IonCard mode='ios'>
         <IonCardHeader>GEB = 1347 Kcal/dia</IonCardHeader>
-        <IonCardContent>
-          Lorem ipsum dolor sit amet.
-        </IonCardContent>
+      </IonCard>
+      <IonCard mode='ios'>
+        <IonCardHeader>GEB = 1347 Kcal/dia</IonCardHeader>
       </IonCard>
       </IonContent>
     </IonPage>
