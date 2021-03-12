@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { IonContent, IonIcon, IonText, IonPage, IonRange, IonList, IonRadioGroup, IonListHeader, IonLabel, IonItem, IonRadio, IonItemDivider, IonSelect, IonSelectOption, IonButton } from '@ionic/react';
+import { IonContent, IonIcon, IonText, IonPage, IonRange, IonList, IonRadioGroup, IonListHeader, IonLabel, IonItem, IonRadio, IonItemDivider, IonSelect, IonSelectOption, IonButton, IonImg } from '@ionic/react';
 import { barbellOutline, accessibilityOutline, heartOutline } from 'ionicons/icons';
 import { useHistory } from 'react-router';
-
+import workOut from '../assets/workout.svg';
 
 const Tab1: React.FC = () => {
 
@@ -11,8 +11,10 @@ const Tab1: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
+      <IonImg style={{width:'50%', display: 'auto', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px'}} src={workOut}></IonImg>
         <IonList>
           <IonItemDivider> Harris Benedict</IonItemDivider>
+         
           <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)}>
             <IonListHeader>
               <IonLabel>Genero</IonLabel>
@@ -35,6 +37,7 @@ const Tab1: React.FC = () => {
               <IonSelectOption value="red">Red</IonSelectOption>
             </IonSelect>
           </IonItem>
+          
           <IonItem>
             <IonLabel position="stacked">Edad</IonLabel>
             <IonRange pin={true} value={5} onIonChange={e => { console.log(e) }} >
