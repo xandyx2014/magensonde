@@ -36,22 +36,19 @@ import './theme/variables.css';
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonTabs>
+      <IonTabs >
         <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
+          <Route exact path="/tab1" component={Tab1} >
           </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
+          <Route exact path="/tab2" component={Tab2}>
           </Route>
-          <Route path="/tab3">
-            <Tab3 />
+          <Route path="/tab3" component={Tab3}>
           </Route>
           <Route exact path="/">
             <Redirect to="/tab1" />
           </Route>
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
+        <IonTabBar slot="bottom" color='light' mode='ios'>
           <IonTabButton tab="tab1" href="/tab1">
             <IonIcon icon={triangle} />
             <IonLabel>Tab 1</IonLabel>
