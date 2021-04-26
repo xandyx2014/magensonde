@@ -17,6 +17,7 @@ import {
   IonButton,
   IonImg,
   IonAlert,
+  IonModal,
 } from "@ionic/react";
 import {
   barbellOutline,
@@ -25,6 +26,7 @@ import {
 } from "ionicons/icons";
 import { useHistory } from "react-router";
 import { ScreenInitial } from "./components/screen_initial";
+import { ScreenSecond } from "./components/screen_second";
 
 const Tab1: React.FC = () => {
   const [showAlert, setShowAlert] = useState(false);
@@ -33,6 +35,7 @@ const Tab1: React.FC = () => {
   const [screen3, setScreen3] = useState("false");
   const [screen4, setScreen4] = useState("false");
   const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
   const verifyIsFalse = () => {
     if (screen1 === "true") {
       return screen1;
@@ -56,7 +59,6 @@ const Tab1: React.FC = () => {
           <IonListHeader>
             <IonLabel>Screen inicial</IonLabel>
           </IonListHeader>
-
           <ScreenInitial
             title={"IMC < 20.5"}
             value={screen1}
@@ -85,6 +87,52 @@ const Tab1: React.FC = () => {
               setScreen4(value);
             }}
           />
+
+          <IonModal isOpen={showModal} cssClass="my-custom-class">
+            <IonPage>
+              <IonContent>
+                <IonList>
+                  <IonItemDivider>Estado nutricional</IonItemDivider>
+                  <ScreenSecond
+                    value={[
+                      { value: 0, text: "Normal", description: "" },
+                      {
+                        text: "Desnutricion Leve",
+                        value: 1,
+                        description:
+                          "Pérdida de peso > 5 % en los ultimos 3 meses o ingesta inferior al 50-70% en la ultima semana",
+                      },
+                      {
+                        text: "Desnutricion Moderado",
+                        value: 2,
+                        description:
+                          "Pérdida de peso > 5 % en los ultimos 2 meses o IMC 18,5-20,5 + estado general deterioado o ingesta entre el 25%-60% de los requerimientos en la ultima semana",
+                      },
+                      {
+                        text: "Desnutricion Grave",
+                        value: 3,
+                        description:
+                          "Pérdida de peso mayor del 5% en un mes (> 15 % en 3 meses) o IMC <18-5 + estado general deteriorado o ingesta de 0-25% de los requerimientos normales en la semana previa",
+                      },
+                    ]}
+                  />
+                  <IonItemDivider className="ion-margin-top">
+                    Severidad de la enfermedad (incrementa requerimientos)
+                  </IonItemDivider>
+                </IonList>
+                <IonButton
+                  style={{
+                    margin: 10,
+                  }}
+                  fill="solid"
+                  expand="full"
+                  onClick={() => setShowModal(false)}
+                >
+                  Cerrar
+                </IonButton>
+              </IonContent>
+            </IonPage>
+          </IonModal>
 
           {/* <IonItem>
             <IonLabel>Nivel del estress</IonLabel>
@@ -155,7 +203,7 @@ const Tab1: React.FC = () => {
           onClick={() => {
             // history.push("/tab2");
             if (verifyIsFalse() === "true") {
-              // show screen 2
+              setShowModal(true);
               return;
             }
             setShowAlert(true);
