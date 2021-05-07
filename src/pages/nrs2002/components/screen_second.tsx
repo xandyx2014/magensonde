@@ -17,16 +17,22 @@ interface ValueList {
 
 interface Props {
   value: ValueList[];
+  onChange: (value: any) => any;
 }
 
-export const ScreenSecond = (props: Props) => {
+export const ScreenSecond = React.memo((props: Props) => {
   return (
-    <IonRadioGroup onIonChange={(value: any) => {}}>
+    <IonRadioGroup
+      onIonChange={(value: any) => {
+        props.onChange(value.target.value);
+      }}
+    >
       {props.value.map((item, index) => {
         return (
           <IonItem key={index}>
             <IonText>
               <IonText color="primary">{item.text} </IonText> <br />
+              <IonText color="medium">PUNTUACION {item.value} </IonText> <br />
               {item.description}
             </IonText>
             <IonRadio slot="start" value={item.value} />
@@ -35,4 +41,4 @@ export const ScreenSecond = (props: Props) => {
       })}
     </IonRadioGroup>
   );
-};
+});

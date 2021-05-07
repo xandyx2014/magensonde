@@ -18,15 +18,19 @@ import {
   IonImg,
   IonAlert,
   IonModal,
+  useIonAlert,
+  IonInput,
 } from "@ionic/react";
 import {
   barbellOutline,
   accessibilityOutline,
   heartOutline,
 } from "ionicons/icons";
+import Viewer from "react-viewer";
 import { useHistory } from "react-router";
 import { ScreenInitial } from "./components/screen_initial";
 import { ScreenSecond } from "./components/screen_second";
+import Prototipo from "../../assets/prototipo.png";
 
 const Tab1: React.FC = () => {
   const [showAlert, setShowAlert] = useState(false);
@@ -34,8 +38,13 @@ const Tab1: React.FC = () => {
   const [screen2, setScreen2] = useState("false");
   const [screen3, setScreen3] = useState("false");
   const [screen4, setScreen4] = useState("false");
+  const [nutritionalState, setNutritionalState] = useState(0);
+  const [enfermedadState, setEnfermedad] = useState(0);
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
+  const [edadPaciente, setEdadPaciente] = useState(0);
+  const [present] = useIonAlert();
+  const [visible, setVisible] = React.useState(false);
   const verifyIsFalse = () => {
     if (screen1 === "true") {
       return screen1;
@@ -92,8 +101,24 @@ const Tab1: React.FC = () => {
             <IonPage>
               <IonContent>
                 <IonList>
+                  <IonItemDivider>Edad del paciente</IonItemDivider>
+                  <IonItem>
+                    <IonLabel position="stacked">Edad del paciente.</IonLabel>
+                    <IonInput
+                      type="number"
+                      inputmode="numeric"
+                      min="0"
+                      value={edadPaciente}
+                      onIonChange={(e: any) => {
+                        setEdadPaciente(e.target.value);
+                      }}
+                    ></IonInput>
+                  </IonItem>
                   <IonItemDivider>Estado nutricional</IonItemDivider>
                   <ScreenSecond
+                    onChange={(value) => {
+                      setNutritionalState(value);
+                    }}
                     value={[
                       { value: 0, text: "Normal", description: "" },
                       {
@@ -119,11 +144,113 @@ const Tab1: React.FC = () => {
                   <IonItemDivider className="ion-margin-top">
                     Severidad de la enfermedad (incrementa requerimientos)
                   </IonItemDivider>
+                  <ScreenSecond
+                    onChange={(value) => {
+                      setEnfermedad(value);
+                    }}
+                    value={[
+                      {
+                        value: 0,
+                        text: "Ausente",
+                        description: "Requerimientos nutricionales normales",
+                      },
+                      {
+                        text: "Leve",
+                        value: 1,
+                        description:
+                          "Fractura de cadera, pacientes crónicos, complicaciones agudas de cirrosis, EPOC, hemodiálisis, diabetes, enfermos oncológicos",
+                      },
+                      {
+                        text: "Moderada",
+                        value: 2,
+                        description:
+                          "Cirugía mayor abdominal AVC, neumonia severa y tumores hematológicos",
+                      },
+                      {
+                        text: "Grave",
+                        value: 3,
+                        description:
+                          "Traumatismo craneoencefálico tranplante medular. Pacientes en cuidados intensivos (APACHE > 10)",
+                      },
+                    ]}
+                  />
+                  <IonItem>
+                    <IonLabel className="ion-text-wrap">
+                      <IonText color="medium">Puntuacion 1 : </IonText>
+                      Paciente con enfemedad cronica ingresado en el hospital
+                      debido a complicaciones. El paciente esta debil pero no
+                      encamado. Los requerimientos proteicos estan
+                      incrementados, pero pueden ser cubiertos mediante la dieta
+                      oral o suplementos
+                    </IonLabel>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel className="ion-text-wrap">
+                      <IonText color="medium">Puntuacion 2 : </IonText>
+                      Paciente encamado debido a la enfemedad, por ejemplo,
+                      cirugia mayor abdominal. Los requermientos proteicos estan
+                      incrementados notablemente pero pueden ser cubiertos,
+                      aunque la nutricion artifical se requiere en muchos casos.
+                    </IonLabel>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel className="ion-text-wrap">
+                      <IonText color="medium">Puntuacion 3 : </IonText>
+                      Pacientes en cuidado intensivos con ventilacion mecanica,
+                      etc. Los requerimientos proteicos estan incrementados y no
+                      pueden ser cubiertos a pesar del uso de nutricion
+                      artificial. El catabolismo proteico y las perdidas de
+                      nitrogeno pueden ser atenuadas de forma significativa.
+                    </IonLabel>
+                  </IonItem>
                 </IonList>
+
+                <IonButton
+                  color="primary"
+                  style={{
+                    margin: 10,
+                  }}
+                  fill="solid"
+                  expand="full"
+                  onClick={async () => {
+                    console.log(
+                      enfermedadState,
+                      nutritionalState,
+                      edadPaciente
+                    );
+                    const isOld = Number(edadPaciente) > 70 ? 1 : 0;
+                    const totalNumber =
+                      enfermedadState + nutritionalState + isOld;
+                    console.log(totalNumber);
+                    let message =
+                      "El paciente está en riesgo de malnutricion y es necesario inicar soporte nutrional";
+                    if (totalNumber < 3) {
+                      message =
+                        "Es necesario reevuluar semanalmente. Si el paciente va aser sometido a cirugia mayor, iniciar soporte nutricional perioperatorio";
+                    }
+                    present({
+                      cssClass: "my-css",
+                      header: "Resultado",
+                      message: message,
+                      buttons: [
+                        "Cancelar",
+                        {
+                          text: "Aceptar",
+                          handler: (d) => {},
+                        },
+                      ],
+                      onDidDismiss: (e) => {},
+                    });
+                  }}
+                >
+                  Calcular
+                </IonButton>
+
                 <IonButton
                   style={{
                     margin: 10,
                   }}
+                  color="danger"
                   fill="solid"
                   expand="full"
                   onClick={() => setShowModal(false)}
