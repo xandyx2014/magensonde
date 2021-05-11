@@ -3,8 +3,8 @@ import {
   IonCard,
   IonCardContent,
   IonCardHeader,
+  IonCardSubtitle,
   IonContent,
-  IonHeader,
   IonItem,
   IonItemDivider,
   IonLabel,
@@ -12,8 +12,7 @@ import {
   IonPage,
   IonSelect,
   IonSelectOption,
-  IonTitle,
-  IonToolbar,
+  IonText,
   useIonAlert,
 } from "@ionic/react";
 import React, { useState } from "react";
@@ -27,7 +26,11 @@ const Tab2: React.FC = () => {
   const [comorbilidades, setCormobilidades] = useState(0);
   const [dias, setDias] = useState(0);
   const [pcr, setPcr] = useState(0);
+  const [nutric, setNutric] = useState('NUTRIC-1');
   const [present] = useIonAlert();
+  const getTotal = () => {
+    return (edad + apache + sofa + comorbilidades + dias + pcr);
+  }
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -143,7 +146,7 @@ const Tab2: React.FC = () => {
                   setDias(value);
                 }}
                 value={[
-                  { value: 0, text: "Puntuacion 0", description: "0" },
+                  { value: 0, text: "Puntuacion 0", description: "Ninguno 0" },
                   {
                     value: 1,
                     text: "Puntuacion 1",
@@ -178,10 +181,12 @@ const Tab2: React.FC = () => {
         <IonItem>
           <IonLabel>Selecciona Nutric</IonLabel>
           <IonSelect
-            value={"NUTRIC-1"}
-            okText="Okay"
-            cancelText="Dismiss"
-            onIonChange={(e) => {}}
+            value={nutric}
+            okText="Aceptar"
+            cancelText="Cancelar"
+            onIonChange={(e: any) => {
+              setNutric(e.target.value);
+            }}
           >
             <IonSelectOption value="NUTRIC-1">
               1 (excluyendo PCR)
@@ -191,31 +196,39 @@ const Tab2: React.FC = () => {
             </IonSelectOption>
           </IonSelect>
         </IonItem>
-        <IonButton
-          color="primary"
-          style={{
-            margin: 10,
-          }}
-          fill="solid"
-          expand="full"
-          onClick={async () => {
-            present({
-              cssClass: "my-css",
-              header: "Resultado",
-              message: "message",
-              buttons: [
-                "Cancelar",
-                {
-                  text: "Aceptar",
-                  handler: (d) => {},
-                },
-              ],
-              onDidDismiss: (e) => {},
-            });
-          }}
-        >
-          Calcular
-        </IonButton>
+        { 
+          nutric === "NUTRIC-2" ? 
+          <IonCard mode="ios">
+          <IonCardHeader>NUTRIC (incluyendo PSR)</IonCardHeader>
+          <IonCardHeader>Total puntos: { getTotal() }</IonCardHeader>
+          <IonCardContent>
+           { (getTotal()) <= 5 ? 
+          <IonText>Estos pacientes tienen un riesgo bajo de malnutrición</IonText>
+          : 
+            <ul>
+              <li>Asociado con peor pronóstico clínico (mortalidad, ventilación)</li>
+              <li>Estos pacientes con mayor probabilidad se beneficiarán de terapia 
+          nutricional agresiva</li>
+            </ul>
+          } 
+          </IonCardContent>
+        </IonCard> : 
+        <IonCard mode="ios">
+          <IonCardHeader>NUTRIC (excluyendo PSR)</IonCardHeader>
+          <IonCardHeader mode="md">Total puntos: { getTotal() }</IonCardHeader>
+          <IonCardContent>
+          { (getTotal()) <= 4 ? 
+          <IonText>Estos pacientes tienen un riesgo bajo de malnutrición</IonText>
+          : 
+            <ul>
+              <li>Asociado con peor pronóstico clínico (mortalidad, ventilación)</li>
+              <li>Estos pacientes con mayor probabilidad se beneficiarán de terapia </li>
+              <li>Nutricional agresiva</li>
+            </ul>
+          } 
+          </IonCardContent>
+        </IonCard> 
+        }
       </IonContent>
     </IonPage>
   );

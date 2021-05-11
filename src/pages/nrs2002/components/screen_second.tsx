@@ -7,7 +7,7 @@ import {
   IonRadioGroup,
   IonText,
 } from "@ionic/react";
-import React from "react";
+import React, { useState } from "react";
 
 interface ValueList {
   value: any;
