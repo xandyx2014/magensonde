@@ -1,9 +1,7 @@
 import {
-  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonCardSubtitle,
   IonContent,
   IonItem,
   IonItemDivider,
@@ -13,7 +11,6 @@ import {
   IonSelect,
   IonSelectOption,
   IonText,
-  useIonAlert,
 } from "@ionic/react";
 import React, { useState } from "react";
 import { ScreenSecond } from "../nrs2002/components/screen_second";
@@ -26,11 +23,10 @@ const Tab2: React.FC = () => {
   const [comorbilidades, setCormobilidades] = useState(0);
   const [dias, setDias] = useState(0);
   const [pcr, setPcr] = useState(0);
-  const [nutric, setNutric] = useState('NUTRIC-1');
-  const [present] = useIonAlert();
+  const [nutric, setNutric] = useState("NUTRIC-1");
   const getTotal = () => {
-    return (edad + apache + sofa + comorbilidades + dias + pcr);
-  }
+    return edad + apache + sofa + comorbilidades + dias + pcr;
+  };
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -196,39 +192,54 @@ const Tab2: React.FC = () => {
             </IonSelectOption>
           </IonSelect>
         </IonItem>
-        { 
-          nutric === "NUTRIC-2" ? 
+        {nutric === "NUTRIC-2" ? (
           <IonCard mode="ios">
-          <IonCardHeader>NUTRIC (incluyendo PSR)</IonCardHeader>
-          <IonCardHeader>Total puntos: { getTotal() }</IonCardHeader>
-          <IonCardContent>
-           { (getTotal()) <= 5 ? 
-          <IonText>Estos pacientes tienen un riesgo bajo de malnutrición</IonText>
-          : 
-            <ul>
-              <li>Asociado con peor pronóstico clínico (mortalidad, ventilación)</li>
-              <li>Estos pacientes con mayor probabilidad se beneficiarán de terapia 
-          nutricional agresiva</li>
-            </ul>
-          } 
-          </IonCardContent>
-        </IonCard> : 
-        <IonCard mode="ios">
-          <IonCardHeader>NUTRIC (excluyendo PSR)</IonCardHeader>
-          <IonCardHeader mode="md">Total puntos: { getTotal() }</IonCardHeader>
-          <IonCardContent>
-          { (getTotal()) <= 4 ? 
-          <IonText>Estos pacientes tienen un riesgo bajo de malnutrición</IonText>
-          : 
-            <ul>
-              <li>Asociado con peor pronóstico clínico (mortalidad, ventilación)</li>
-              <li>Estos pacientes con mayor probabilidad se beneficiarán de terapia </li>
-              <li>Nutricional agresiva</li>
-            </ul>
-          } 
-          </IonCardContent>
-        </IonCard> 
-        }
+            <IonCardHeader>NUTRIC (incluyendo PSR)</IonCardHeader>
+            <IonCardHeader>Total puntos: {getTotal()}</IonCardHeader>
+            <IonCardContent>
+              {getTotal() <= 5 ? (
+                <IonText>
+                  Estos pacientes tienen un riesgo bajo de malnutrición
+                </IonText>
+              ) : (
+                <ul>
+                  <li>
+                    Asociado con peor pronóstico clínico (mortalidad,
+                    ventilación)
+                  </li>
+                  <li>
+                    Estos pacientes con mayor probabilidad se beneficiarán de
+                    terapia nutricional agresiva
+                  </li>
+                </ul>
+              )}
+            </IonCardContent>
+          </IonCard>
+        ) : (
+          <IonCard mode="ios">
+            <IonCardHeader>NUTRIC (excluyendo PSR)</IonCardHeader>
+            <IonCardHeader mode="md">Total puntos: {getTotal()}</IonCardHeader>
+            <IonCardContent>
+              {getTotal() <= 4 ? (
+                <IonText>
+                  Estos pacientes tienen un riesgo bajo de malnutrición
+                </IonText>
+              ) : (
+                <ul>
+                  <li>
+                    Asociado con peor pronóstico clínico (mortalidad,
+                    ventilación)
+                  </li>
+                  <li>
+                    Estos pacientes con mayor probabilidad se beneficiarán de
+                    terapia{" "}
+                  </li>
+                  <li>Nutricional agresiva</li>
+                </ul>
+              )}
+            </IonCardContent>
+          </IonCard>
+        )}
       </IonContent>
     </IonPage>
   );

@@ -1,5 +1,5 @@
 {
-  "appId": "bo.ueb.magensonde",
+  "appId": "io.ionic.starter",
   "appName": "magensonde",
   "bundledWebRuntime": false,
   "npmClient": "npm",
