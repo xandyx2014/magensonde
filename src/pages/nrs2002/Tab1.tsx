@@ -116,6 +116,7 @@ const Tab1: React.FC = () => {
                   </IonItem>
                   <IonItemDivider>Estado nutricional</IonItemDivider>
                   <ScreenSecond
+                    showScore={true}
                     onChange={(value) => {
                       setNutritionalState(value);
                     }}
@@ -145,6 +146,7 @@ const Tab1: React.FC = () => {
                     Severidad de la enfermedad (incrementa requerimientos)
                   </IonItemDivider>
                   <ScreenSecond
+                    showScore={true}
                     onChange={(value) => {
                       setEnfermedad(value);
                     }}
@@ -213,15 +215,10 @@ const Tab1: React.FC = () => {
                   fill="solid"
                   expand="full"
                   onClick={async () => {
-                    console.log(
-                      enfermedadState,
-                      nutritionalState,
-                      edadPaciente
-                    );
                     const isOld = Number(edadPaciente) > 70 ? 1 : 0;
                     const totalNumber =
                       enfermedadState + nutritionalState + isOld;
-                    console.log(totalNumber);
+
                     let message =
                       "El paciente está en riesgo de malnutricion y es necesario inicar soporte nutrional";
                     if (totalNumber < 3) {

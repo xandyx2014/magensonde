@@ -18,6 +18,8 @@ interface ValueList {
 interface Props {
   value: ValueList[];
   onChange: (value: any) => any;
+  mode?: "ios" | "md";
+  showScore?: boolean;
 }
 
 export const ScreenSecond = React.memo((props: Props) => {
@@ -29,13 +31,25 @@ export const ScreenSecond = React.memo((props: Props) => {
     >
       {props.value.map((item, index) => {
         return (
-          <IonItem key={index}>
+          <IonItem key={index} mode={props.mode}>
             <IonText>
-              <IonText color="primary">{item.text} </IonText> <br />
-              <IonText color="medium">PUNTUACION {item.value} </IonText> <br />
+              <IonText color="primary" mode={props.mode}>
+                {item.text}
+              </IonText>
+
+              {props.showScore && (
+                <>
+                  <br />
+                  <IonText color="medium" mode={props.mode}>
+                    PUNTUACION {item.value}
+                  </IonText>
+                </>
+              )}
+
+              <br />
               {item.description}
             </IonText>
-            <IonRadio slot="start" value={item.value} />
+            <IonRadio slot="start" value={item.value} mode={props.mode} />
           </IonItem>
         );
       })}
