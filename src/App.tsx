@@ -12,7 +12,7 @@ import { IonReactRouter } from "@ionic/react-router";
 import * as Icon from "ionicons/icons";
 import Tab1 from "./pages/nrs2002/Tab1";
 import Tab2 from "./pages/nutric/Tab2";
-import Tab3 from "./pages/Tab3";
+import Tab3 from "./pages/apache/Tab3";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -56,7 +56,7 @@ const App: React.FC = () => (
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon icon={Icon.gitNetworkOutline} />
-            <IonLabel>Must</IonLabel>
+            <IonLabel>APACHE II</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon icon={Icon.square} />

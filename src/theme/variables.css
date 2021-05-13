@@ -84,7 +84,12 @@ http://ionicframework.com/docs/theming/ */
   -ms-animation: fadeIn ease 1.5s;
 }
 
-
+.img-center {
+  width: "35vw";
+  display: "block";
+  margin-left: "auto";
+  margin-right: "auto";
+}
 @keyframes fadeIn{
   0% {
     opacity:0;

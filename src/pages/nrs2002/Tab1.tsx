@@ -65,9 +65,7 @@ const Tab1: React.FC = () => {
       <IonContent className="fade-in">
         <IonList>
           <IonItemDivider>Nutritional Risk Screening (NRS-2002)</IonItemDivider>
-          <IonListHeader>
-            <IonLabel>Screen inicial</IonLabel>
-          </IonListHeader>
+
           <ScreenInitial
             title={"IMC < 20.5"}
             value={screen1}
