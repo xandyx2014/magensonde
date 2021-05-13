@@ -3,16 +3,15 @@ import {
   IonCardContent,
   IonCardHeader,
   IonContent,
-  IonImg,
   IonItemDivider,
   IonList,
   IonPage,
-  IonThumbnail,
 } from "@ionic/react";
 import { ScreenSecond } from "../nrs2002/components/screen_second";
 import "./Tab3.css";
 
 import Eyes from "../../assets/eyes.png";
+import Mouth from "../../assets/mouth.png";
 const Tab3: React.FC = () => {
   return (
     <IonPage>
@@ -317,6 +316,35 @@ const Tab3: React.FC = () => {
           <img
             src={Eyes}
             alt="Hojo"
+            style={{
+              width: "35vw",
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          ></img>
+          <IonCardContent>
+            <IonList>
+              <ScreenSecond
+                mode="md"
+                onChange={(value) => {
+                  console.log(Math.abs(value));
+                }}
+                value={[
+                  { value: 4, text: "Puntuacion 4", description: "Espontanea" },
+                  { value: 3, text: "Puntuacion 3", description: "Voz" },
+                  { value: 2, text: "Puntuacion 2", description: "Dolor" },
+                  { value: 1, text: "Puntuacion 1", description: "Ninguna" },
+                ]}
+              />
+            </IonList>
+          </IonCardContent>
+        </IonCard>
+        <IonCard>
+          <IonCardHeader>Pespuestas Verbal</IonCardHeader>
+          <img
+            src={Mouth}
+            alt="Boca"
             style={{
               width: "35vw",
               display: "block",
