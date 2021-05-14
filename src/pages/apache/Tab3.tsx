@@ -12,6 +12,7 @@ import "./Tab3.css";
 
 import Eyes from "../../assets/eyes.png";
 import Mouth from "../../assets/mouth.png";
+import Hand from "../../assets/hand.png";
 const Tab3: React.FC = () => {
   return (
     <IonPage>
@@ -360,10 +361,95 @@ const Tab3: React.FC = () => {
                   console.log(Math.abs(value));
                 }}
                 value={[
-                  { value: 4, text: "Puntuacion 4", description: "Espontanea" },
-                  { value: 3, text: "Puntuacion 3", description: "Voz" },
-                  { value: 2, text: "Puntuacion 2", description: "Dolor" },
+                  { value: 5, text: "Puntuacion 4", description: "Orientada" },
+                  { value: 4, text: "Puntuacion 4", description: "Confusa" },
+                  {
+                    value: 3,
+                    text: "Puntuacion 3",
+                    description: "Inapropiedad",
+                  },
+                  { value: 2, text: "Puntuacion 2", description: "sonidos" },
+                  { value: 1, text: "Puntuacion 1", description: "ninguna" },
+                ]}
+              />
+            </IonList>
+          </IonCardContent>
+        </IonCard>
+        <IonCard>
+          <IonCardHeader>Respuesta motriz</IonCardHeader>
+          <img
+            src={Hand}
+            alt="Boca"
+            style={{
+              width: "35vw",
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          ></img>
+          <IonCardContent>
+            <IonList>
+              <ScreenSecond
+                mode="md"
+                onChange={(value) => {
+                  console.log(Math.abs(value));
+                }}
+                value={[
+                  { value: 6, text: "Puntuacion 6", description: "Obedece" },
+                  { value: 5, text: "Puntuacion 5", description: "Localiza" },
+                  { value: 4, text: "Puntuacion 4", description: "Retirada" },
+                  { value: 3, text: "Puntuacion 3", description: "Flexion" },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "Extension",
+                  },
                   { value: 1, text: "Puntuacion 1", description: "Ninguna" },
+                ]}
+              />
+            </IonList>
+          </IonCardContent>
+        </IonCard>
+        <IonCard mode="ios">
+          <IonCardHeader>Enfermedad cronica</IonCardHeader>
+          <IonCardContent>
+            <IonList>
+              <ScreenSecond
+                mode="md"
+                onChange={(value) => {
+                  console.log(Math.abs(value));
+                }}
+                value={[
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "Preoperatorio programado",
+                  },
+                  {
+                    value: 5,
+                    text: "Puntuacion 5",
+                    description: "Preoperatorio urgente o medico",
+                  },
+                ]}
+              />
+            </IonList>
+          </IonCardContent>
+        </IonCard>
+        <IonCard mode="ios">
+          <IonCardHeader>Edad</IonCardHeader>
+          <IonCardContent>
+            <IonList>
+              <ScreenSecond
+                mode="md"
+                onChange={(value) => {
+                  console.log(Math.abs(value));
+                }}
+                value={[
+                  { value: 0, text: "Puntuacion 0", description: ">= 44" },
+                  { value: 2, text: "Puntuacion 2", description: "45 - 64" },
+                  { value: 3, text: "Puntuacion 3", description: "55 - 64" },
+                  { value: 5, text: "Puntuacion 5", description: "65 - 74" },
+                  { value: 6, text: "Puntuacion 6", description: ">= 75" },
                 ]}
               />
             </IonList>
