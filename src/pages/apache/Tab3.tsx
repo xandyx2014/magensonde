@@ -13,7 +13,24 @@ import "./Tab3.css";
 import Eyes from "../../assets/eyes.png";
 import Mouth from "../../assets/mouth.png";
 import Hand from "../../assets/hand.png";
+import { useState } from "react";
 const Tab3: React.FC = () => {
+  const [temperatura, setTemperatura] = useState(0);
+  const [presion, setPresion] = useState(0);
+  const [cardiaca, setCardiaca] = useState(0);
+  const [respiratoria, setRespiratoria] = useState(0);
+  const [oxigenacion, setOxigenacion] = useState(0);
+  const [ph, setPh] = useState(0);
+  const [na, setNa] = useState(0);
+  const [k, setK] = useState(0);
+  const [creatinina, setCreatinina] = useState(0);
+  const [hemotrocitro, setHematrocito] = useState(0);
+  const [leucocitos, setLeucocitos] = useState(0);
+  const [aberturaOscular, setAberturaOscular] = useState(0);
+  const [pespuestasVerbal, setPespuestasVerbal] = useState(0);
+  const [respuestaMotriz, setRespuestaMotriz] = useState(0);
+  const [enfermedadCronica, setEnfermedadCronica] = useState(0);
+  const [edad, setEdad] = useState(0);
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -25,21 +42,49 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setTemperatura(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 40,9" },
-                  { value: -3, text: "Puntuacion 3", description: "39 - 40,9" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 40,9",
+                  },
+                  {
+                    value: -3,
+                    text: "Puntuacion 3",
+                    description: "39 - 40,9",
+                  },
                   {
                     value: -1,
                     text: "Puntuacion 1",
                     description: "38,5 - 38,9",
                   },
-                  { value: 0, text: "Puntuacion 0", description: "36 - 38,4" },
-                  { value: 1, text: "Puntuacion 1", description: "34 - 35,9" },
-                  { value: 2, text: "Puntuacion 2", description: "32 - 31,9" },
-                  { value: 3, text: "Puntuacion 3", description: "30 - 31,9" },
-                  { value: 4, text: "Puntuacion 4", description: "< 30" },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: "36 - 38,4",
+                  },
+                  {
+                    value: 1,
+                    text: "Puntuacion 1",
+                    description: "34 - 35,9",
+                  },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "32 - 31,9",
+                  },
+                  {
+                    value: 3,
+                    text: "Puntuacion 3",
+                    description: "30 - 31,9",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 30",
+                  },
                 ]}
               />
             </IonList>
@@ -52,19 +97,39 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setPresion(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 159" },
-                  { value: -3, text: "Puntuacion 3", description: "130 - 159" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 159",
+                  },
+                  {
+                    value: -3,
+                    text: "Puntuacion 3",
+                    description: "130 - 159",
+                  },
                   {
                     value: -2,
                     text: "Puntuacion 2",
                     description: "110 - 129",
                   },
-                  { value: 0, text: "Puntuacion 0", description: "70 - 109" },
-                  { value: 2, text: "Puntuacion 2", description: "50 - 69" },
-                  { value: 4, text: "Puntuacion 4", description: "< 50" },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: "70 - 109",
+                  },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "50 - 69",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 50",
+                  },
                 ]}
               />
             </IonList>
@@ -77,20 +142,44 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setCardiaca(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 179" },
-                  { value: -3, text: "Puntuacion 3", description: "39 - 40,9" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 179",
+                  },
+                  {
+                    value: -3,
+                    text: "Puntuacion 3",
+                    description: "39 - 40,9",
+                  },
                   {
                     value: -2,
                     text: "Puntuacion 2",
                     description: "110 - 129",
                   },
-                  { value: 0, text: "Puntuacion 0", description: "70 - 109" },
-                  { value: 2, text: "Puntuacion 2", description: "55 - 69" },
-                  { value: 3, text: "Puntuacion 3", description: "40 - 54" },
-                  { value: 4, text: "Puntuacion 4", description: "< 40" },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: "70 - 109",
+                  },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "55 - 69",
+                  },
+                  {
+                    value: 3,
+                    text: "Puntuacion 3",
+                    description: "40 - 54",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 40",
+                  },
                 ]}
               />
             </IonList>
@@ -103,20 +192,44 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setRespiratoria(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 49" },
-                  { value: -3, text: "Puntuacion 3", description: "35 - 49" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 49",
+                  },
+                  {
+                    value: -3,
+                    text: "Puntuacion 3",
+                    description: "35 - 49",
+                  },
                   {
                     value: -1,
                     text: "Puntuacion 1",
                     description: "25 - 34",
                   },
-                  { value: 0, text: "Puntuacion 0", description: "12 - 24" },
-                  { value: 1, text: "Puntuacion 1", description: "10 - 11" },
-                  { value: 2, text: "Puntuacion 2", description: "6 - 9" },
-                  { value: 4, text: "Puntuacion 4", description: "< 6" },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: "12 - 24",
+                  },
+                  {
+                    value: 1,
+                    text: "Puntuacion 1",
+                    description: "10 - 11",
+                  },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "6 - 9",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 6",
+                  },
                 ]}
               />
             </IonList>
@@ -133,20 +246,44 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setOxigenacion(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "499" },
-                  { value: -3, text: "Puntuacion 3", description: "350 - 499" },
-                  { value: -2, text: "Puntuacion 2", description: "200-349" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "499",
+                  },
+                  {
+                    value: -3,
+                    text: "Puntuacion 3",
+                    description: "350 - 499",
+                  },
+                  {
+                    value: -2,
+                    text: "Puntuacion 2",
+                    description: "200-349",
+                  },
                   {
                     value: 0,
                     text: "Puntuacion 0",
                     description: "> 200 O < 70",
                   },
-                  { value: 1, text: "Puntuacion 1", description: "61 - 70" },
-                  { value: 3, text: "Puntuacion 3", description: "56 - 70" },
-                  { value: 4, text: "Puntuacion 4", description: "< 56" },
+                  {
+                    value: 1,
+                    text: "Puntuacion 1",
+                    description: "61 - 70",
+                  },
+                  {
+                    value: 3,
+                    text: "Puntuacion 3",
+                    description: "56 - 70",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 56",
+                  },
                 ]}
               />
             </IonList>
@@ -159,10 +296,14 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setPh(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 7,9" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 7,9",
+                  },
                   {
                     value: -3,
                     text: "Puntuacion 3",
@@ -188,7 +329,11 @@ const Tab3: React.FC = () => {
                     text: "Puntuacion 3",
                     description: "7,15 - 7,24",
                   },
-                  { value: 4, text: "Puntuacion 4", description: "< 7,15" },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 7,15",
+                  },
                 ]}
               />
             </IonList>
@@ -201,21 +346,49 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setNa(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 179" },
-                  { value: -3, text: "Puntuacion 3", description: "160 - 179" },
-                  { value: -2, text: "Puntuacion 2", description: "155 - 159" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 179",
+                  },
+                  {
+                    value: -3,
+                    text: "Puntuacion 3",
+                    description: "160 - 179",
+                  },
+                  {
+                    value: -2,
+                    text: "Puntuacion 2",
+                    description: "155 - 159",
+                  },
                   {
                     value: -1,
                     text: "Puntuacion 1",
                     description: "150 - 154",
                   },
-                  { value: 0, text: "Puntuacion 0", description: "130 - 149" },
-                  { value: 2, text: "Puntuacion 2", description: "120 - 129" },
-                  { value: 3, text: "Puntuacion 3", description: "111 - 119" },
-                  { value: 4, text: "Puntuacion 4", description: "< 111" },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: "130 - 149",
+                  },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "120 - 129",
+                  },
+                  {
+                    value: 3,
+                    text: "Puntuacion 3",
+                    description: "111 - 119",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 111",
+                  },
                 ]}
               />
             </IonList>
@@ -228,20 +401,44 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setK(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 6,9" },
-                  { value: -3, text: "Puntuacion 3", description: "6,0 - 6,9" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 6,9",
+                  },
+                  {
+                    value: -3,
+                    text: "Puntuacion 3",
+                    description: "6,0 - 6,9",
+                  },
                   {
                     value: -1,
                     text: "Puntuacion 1",
                     description: "5,5 - 5,9",
                   },
-                  { value: 0, text: "Puntuacion 0", description: "3,5 - 5,4" },
-                  { value: 1, text: "Puntuacion 1", description: "3,0 - 3,4" },
-                  { value: 2, text: "Puntuacion 2", description: "2,5 - 2,9" },
-                  { value: 4, text: "Puntuacion 4", description: "< 2,5" },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: "3,5 - 5,4",
+                  },
+                  {
+                    value: 1,
+                    text: "Puntuacion 1",
+                    description: "3,0 - 3,4",
+                  },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "2,5 - 2,9",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 2,5",
+                  },
                 ]}
               />
             </IonList>
@@ -254,14 +451,34 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setCreatinina(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 3,9" },
-                  { value: -3, text: "Puntuacion 3", description: "2,0 - 3,4" },
-                  { value: -2, text: "Puntuacion 2", description: "15 - 1,9" },
-                  { value: 0, text: "Puntuacion 0", description: "0,6 - 1,4" },
-                  { value: 2, text: "Puntuacion 2", description: "1,2 - 9" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 3,9",
+                  },
+                  {
+                    value: -3,
+                    text: "Puntuacion 3",
+                    description: "2,0 - 3,4",
+                  },
+                  {
+                    value: -2,
+                    text: "Puntuacion 2",
+                    description: "15 - 1,9",
+                  },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: "0,6 - 1,4",
+                  },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "1,2 - 9",
+                  },
                 ]}
               />
             </IonList>
@@ -274,14 +491,34 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setHematrocito(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 3,4" },
-                  { value: -2, text: "Puntuacion 2", description: "55 - 59,9" },
-                  { value: -1, text: "Puntuacion 1", description: "46 - 49,9" },
-                  { value: 0, text: "Puntuacion 0", description: "30 - 45,9" },
-                  { value: 4, text: "Puntuacion 4", description: "< 20" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 3,4",
+                  },
+                  {
+                    value: -2,
+                    text: "Puntuacion 2",
+                    description: "55 - 59,9",
+                  },
+                  {
+                    value: -1,
+                    text: "Puntuacion 1",
+                    description: "46 - 49,9",
+                  },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: "30 - 45,9",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 20",
+                  },
                 ]}
               />
             </IonList>
@@ -294,18 +531,34 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setLeucocitos(Math.abs(value));
                 }}
                 value={[
-                  { value: -4, text: "Puntuacion 4", description: "> 59,9" },
-                  { value: -2, text: "Puntuacion 2", description: "20 - 39,9" },
+                  {
+                    value: -4,
+                    text: "Puntuacion 4",
+                    description: "> 59,9",
+                  },
+                  {
+                    value: -2,
+                    text: "Puntuacion 2",
+                    description: "20 - 39,9",
+                  },
                   {
                     value: -1,
                     text: "Puntuacion 1",
                     description: "15 - 19,9",
                   },
-                  { value: 0, text: "Puntuacion 0", description: "3 - 14,9" },
-                  { value: 4, text: "Puntuacion 4", description: "< 1" },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: "3 - 14,9",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "< 1",
+                  },
                 ]}
               />
             </IonList>
@@ -329,13 +582,29 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setAberturaOscular(Math.abs(value));
                 }}
                 value={[
-                  { value: 4, text: "Puntuacion 4", description: "Espontanea" },
-                  { value: 3, text: "Puntuacion 3", description: "Voz" },
-                  { value: 2, text: "Puntuacion 2", description: "Dolor" },
-                  { value: 1, text: "Puntuacion 1", description: "Ninguna" },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "Espontanea",
+                  },
+                  {
+                    value: 3,
+                    text: "Puntuacion 3",
+                    description: "Voz",
+                  },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "Dolor",
+                  },
+                  {
+                    value: 1,
+                    text: "Puntuacion 1",
+                    description: "Ninguna",
+                  },
                 ]}
               />
             </IonList>
@@ -358,18 +627,34 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setPespuestasVerbal(Math.abs(value));
                 }}
                 value={[
-                  { value: 5, text: "Puntuacion 4", description: "Orientada" },
-                  { value: 4, text: "Puntuacion 4", description: "Confusa" },
+                  {
+                    value: 5,
+                    text: "Puntuacion 4",
+                    description: "Orientada",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "Confusa",
+                  },
                   {
                     value: 3,
                     text: "Puntuacion 3",
                     description: "Inapropiedad",
                   },
-                  { value: 2, text: "Puntuacion 2", description: "sonidos" },
-                  { value: 1, text: "Puntuacion 1", description: "ninguna" },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "sonidos",
+                  },
+                  {
+                    value: 1,
+                    text: "Puntuacion 1",
+                    description: "ninguna",
+                  },
                 ]}
               />
             </IonList>
@@ -392,19 +677,39 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setRespuestaMotriz(Math.abs(value));
                 }}
                 value={[
-                  { value: 6, text: "Puntuacion 6", description: "Obedece" },
-                  { value: 5, text: "Puntuacion 5", description: "Localiza" },
-                  { value: 4, text: "Puntuacion 4", description: "Retirada" },
-                  { value: 3, text: "Puntuacion 3", description: "Flexion" },
+                  {
+                    value: 6,
+                    text: "Puntuacion 6",
+                    description: "Obedece",
+                  },
+                  {
+                    value: 5,
+                    text: "Puntuacion 5",
+                    description: "Localiza",
+                  },
+                  {
+                    value: 4,
+                    text: "Puntuacion 4",
+                    description: "Retirada",
+                  },
+                  {
+                    value: 3,
+                    text: "Puntuacion 3",
+                    description: "Flexion",
+                  },
                   {
                     value: 2,
                     text: "Puntuacion 2",
                     description: "Extension",
                   },
-                  { value: 1, text: "Puntuacion 1", description: "Ninguna" },
+                  {
+                    value: 1,
+                    text: "Puntuacion 1",
+                    description: "Ninguna",
+                  },
                 ]}
               />
             </IonList>
@@ -417,7 +722,7 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setEnfermedadCronica(Math.abs(value));
                 }}
                 value={[
                   {
@@ -442,14 +747,34 @@ const Tab3: React.FC = () => {
               <ScreenSecond
                 mode="md"
                 onChange={(value) => {
-                  console.log(Math.abs(value));
+                  setEdad(Math.abs(value));
                 }}
                 value={[
-                  { value: 0, text: "Puntuacion 0", description: ">= 44" },
-                  { value: 2, text: "Puntuacion 2", description: "45 - 64" },
-                  { value: 3, text: "Puntuacion 3", description: "55 - 64" },
-                  { value: 5, text: "Puntuacion 5", description: "65 - 74" },
-                  { value: 6, text: "Puntuacion 6", description: ">= 75" },
+                  {
+                    value: 0,
+                    text: "Puntuacion 0",
+                    description: ">= 44",
+                  },
+                  {
+                    value: 2,
+                    text: "Puntuacion 2",
+                    description: "45 - 64",
+                  },
+                  {
+                    value: 3,
+                    text: "Puntuacion 3",
+                    description: "55 - 64",
+                  },
+                  {
+                    value: 5,
+                    text: "Puntuacion 5",
+                    description: "65 - 74",
+                  },
+                  {
+                    value: 6,
+                    text: "Puntuacion 6",
+                    description: ">= 75",
+                  },
                 ]}
               />
             </IonList>
