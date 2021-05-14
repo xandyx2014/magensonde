@@ -1,36 +1,20 @@
 import React, { useState } from "react";
 import {
   IonContent,
-  IonIcon,
   IonText,
   IonPage,
-  IonRange,
   IonList,
-  IonRadioGroup,
-  IonListHeader,
   IonLabel,
   IonItem,
-  IonRadio,
   IonItemDivider,
-  IonSelect,
-  IonSelectOption,
   IonButton,
-  IonImg,
   IonAlert,
   IonModal,
   useIonAlert,
   IonInput,
 } from "@ionic/react";
-import {
-  barbellOutline,
-  accessibilityOutline,
-  heartOutline,
-} from "ionicons/icons";
-import Viewer from "react-viewer";
-import { useHistory } from "react-router";
 import { ScreenInitial } from "./components/screen_initial";
 import { ScreenSecond } from "./components/screen_second";
-import Prototipo from "../../assets/prototipo.png";
 
 const Tab1: React.FC = () => {
   const [showAlert, setShowAlert] = useState(false);
@@ -40,11 +24,9 @@ const Tab1: React.FC = () => {
   const [screen4, setScreen4] = useState("false");
   const [nutritionalState, setNutritionalState] = useState(0);
   const [enfermedadState, setEnfermedad] = useState(0);
-  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [edadPaciente, setEdadPaciente] = useState(0);
   const [present] = useIonAlert();
-  const [visible, setVisible] = React.useState(false);
   const verifyIsFalse = () => {
     if (screen1 === "true") {
       return screen1;
@@ -107,6 +89,7 @@ const Tab1: React.FC = () => {
                       inputmode="numeric"
                       min="0"
                       value={edadPaciente}
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       onIonChange={(e: any) => {
                         setEdadPaciente(e.target.value);
                       }}
@@ -231,9 +214,11 @@ const Tab1: React.FC = () => {
                         "Cancelar",
                         {
                           text: "Aceptar",
+                          // eslint-disable-next-line @typescript-eslint/no-empty-function
                           handler: (d) => {},
                         },
                       ],
+                      // eslint-disable-next-line @typescript-eslint/no-empty-function
                       onDidDismiss: (e) => {},
                     });
                   }}

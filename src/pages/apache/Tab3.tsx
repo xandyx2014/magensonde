@@ -1,13 +1,18 @@
 import {
+  IonBadge,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonContent,
+  IonItem,
   IonItemDivider,
+  IonLabel,
   IonList,
   IonPage,
 } from "@ionic/react";
 import { ScreenSecond } from "../nrs2002/components/screen_second";
+import inRangue from "lodash.inrange";
+import { Pie } from "react-chartjs-2";
 import "./Tab3.css";
 
 import Eyes from "../../assets/eyes.png";
@@ -31,6 +36,35 @@ const Tab3: React.FC = () => {
   const [respuestaMotriz, setRespuestaMotriz] = useState(0);
   const [enfermedadCronica, setEnfermedadCronica] = useState(0);
   const [edad, setEdad] = useState(0);
+  const totalSum = (): number => {
+    return (
+      Number(temperatura) +
+      Number(presion) +
+      Number(cardiaca) +
+      Number(respiratoria) +
+      Number(oxigenacion) +
+      Number(ph) +
+      Number(na) +
+      Number(k) +
+      Number(creatinina) +
+      Number(hemotrocitro) +
+      Number(leucocitos) +
+      Number(aberturaOscular) +
+      Number(pespuestasVerbal) +
+      Number(respuestaMotriz) +
+      Number(enfermedadCronica) +
+      Number(edad)
+    );
+  };
+  const mortalidad = () => {
+    if (inRangue(totalSum(), 5, 9)) return 4;
+    if (inRangue(totalSum(), 10, 14)) return 15;
+    if (inRangue(totalSum(), 15, 19)) return 25;
+    if (inRangue(totalSum(), 20, 24)) return 40;
+    if (inRangue(totalSum(), 25, 29)) return 55;
+    if (inRangue(totalSum(), 30, 34)) return 75;
+    if (inRangue(totalSum(), 35, 100000)) return 85;
+  };
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -632,7 +666,7 @@ const Tab3: React.FC = () => {
                 value={[
                   {
                     value: 5,
-                    text: "Puntuacion 4",
+                    text: "Puntuacion 5",
                     description: "Orientada",
                   },
                   {
@@ -780,6 +814,84 @@ const Tab3: React.FC = () => {
             </IonList>
           </IonCardContent>
         </IonCard>
+        <IonItem>
+          <IonLabel slot="start">Puntos Aps :</IonLabel>
+          <IonBadge color="medium" slot="end">
+            {Number(temperatura) +
+              Number(presion) +
+              Number(cardiaca) +
+              Number(respiratoria) +
+              Number(oxigenacion) +
+              Number(ph) +
+              Number(na) +
+              Number(k) +
+              Number(creatinina) +
+              Number(hemotrocitro) +
+              Number(leucocitos)}
+          </IonBadge>
+        </IonItem>
+        <IonItem>
+          <IonLabel slot="start">Sum. GCS :</IonLabel>
+          <IonBadge color="medium" slot="end">
+            {Number(leucocitos) +
+              Number(aberturaOscular) +
+              Number(pespuestasVerbal) +
+              Number(respuestaMotriz)}
+          </IonBadge>
+        </IonItem>
+        <IonItem>
+          <IonLabel slot="start">Sumat Edad :</IonLabel>
+          <IonBadge color="medium" slot="end">
+            {Number(edad)}
+          </IonBadge>
+        </IonItem>
+        <IonItem>
+          <IonLabel slot="start"> Enfermedad Previa:</IonLabel>
+          <IonBadge color="medium" slot="end">
+            {Number(enfermedadCronica)}
+          </IonBadge>
+        </IonItem>
+        <IonItem>
+          <IonLabel slot="start">Total puntuacion :</IonLabel>
+          <IonBadge color="medium" slot="end">
+            {totalSum()}
+          </IonBadge>
+        </IonItem>
+        <IonItem>
+          <IonLabel slot="start">Mortalidad :</IonLabel>
+          <IonBadge color="warning" slot="end">
+            {mortalidad()} %
+          </IonBadge>
+        </IonItem>
+        <Pie
+          type="pie"
+          data={{
+            labels: ["% De Mortalidad"],
+            datasets: [
+              {
+                label: "Porcentaje de mortalidad",
+                data: [mortalidad(), 100],
+                backgroundColor: [
+                  "rgba(255, 99, 132, 0.2)",
+                  "rgba(54, 162, 235, 0.2)",
+                  "rgba(255, 206, 86, 0.2)",
+                  "rgba(75, 192, 192, 0.2)",
+                  "rgba(153, 102, 255, 0.2)",
+                  "rgba(255, 159, 64, 0.2)",
+                ],
+                borderColor: [
+                  "rgba(255, 99, 132, 1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(255, 206, 86, 1)",
+                  "rgba(75, 192, 192, 1)",
+                  "rgba(153, 102, 255, 1)",
+                  "rgba(255, 159, 64, 1)",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          }}
+        ></Pie>
       </IonContent>
     </IonPage>
   );
