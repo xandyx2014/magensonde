@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IonItem, IonRadio, IonRadioGroup, IonText } from "@ionic/react";
 import React from "react";
 
@@ -14,35 +15,36 @@ interface Props {
   showScore?: boolean;
 }
 
-export const ScreenSecond = React.memo((props: Props) => (
-  <IonRadioGroup
-    onIonChange={(value: any) => {
-      props.onChange(value.target.value);
-    }}
-  >
-    {props.value.map((item, index) => {
-      return (
-        <IonItem key={index} mode={props.mode}>
-          <IonText>
-            <IonText color="primary" mode={props.mode}>
-              {item.text}
+export const ScreenSecond: React.FunctionComponent<Props> = React.memo(
+  (props: Props) => (
+    <IonRadioGroup
+      onIonChange={(value: any) => {
+        props.onChange(value.target.value);
+      }}
+    >
+      {props.value.map((item, index) => {
+        return (
+          <IonItem key={index} mode={props.mode}>
+            <IonText>
+              <IonText color="primary" mode={props.mode}>
+                {item.text}
+              </IonText>
+
+              {props.showScore && (
+                <>
+                  <br />
+                  <IonText color="medium" mode={props.mode}>
+                    PUNTUACION {item.value}
+                  </IonText>
+                </>
+              )}
+              <br />
+              {item.description}
             </IonText>
-
-            {props.showScore && (
-              <>
-                <br />
-                <IonText color="medium" mode={props.mode}>
-                  PUNTUACION {item.value}
-                </IonText>
-              </>
-            )}
-
-            <br />
-            {item.description}
-          </IonText>
-          <IonRadio slot="start" value={item.value} mode={props.mode} />
-        </IonItem>
-      );
-    })}
-  </IonRadioGroup>
-));
+            <IonRadio slot="start" value={item.value} mode={props.mode} />
+          </IonItem>
+        );
+      })}
+    </IonRadioGroup>
+  )
+);

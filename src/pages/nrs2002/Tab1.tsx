@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import {
   IonContent,
@@ -47,7 +48,6 @@ const Tab1: React.FC = () => {
       <IonContent className="fade-in">
         <IonList>
           <IonItemDivider>Nutritional Risk Screening (NRS-2002)</IonItemDivider>
-
           <ScreenInitial
             title={"IMC < 20.5"}
             value={screen1}
@@ -76,7 +76,6 @@ const Tab1: React.FC = () => {
               setScreen4(value);
             }}
           />
-
           <IonModal isOpen={showModal} cssClass="my-custom-class">
             <IonPage>
               <IonContent>
@@ -89,7 +88,6 @@ const Tab1: React.FC = () => {
                       inputmode="numeric"
                       min="0"
                       value={edadPaciente}
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       onIonChange={(e: any) => {
                         setEdadPaciente(e.target.value);
                       }}
