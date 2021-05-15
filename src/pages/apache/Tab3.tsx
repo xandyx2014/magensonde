@@ -13,12 +13,11 @@ import {
 import { ScreenSecond } from "../nrs2002/components/screen_second";
 import inRangue from "lodash.inrange";
 import { Pie } from "react-chartjs-2";
-import "./Tab3.css";
-
 import Eyes from "../../assets/eyes.png";
 import Mouth from "../../assets/mouth.png";
 import Hand from "../../assets/hand.png";
 import { useState } from "react";
+import "./Tab3.css";
 const Tab3: React.FC = () => {
   const [temperatura, setTemperatura] = useState(0);
   const [presion, setPresion] = useState(0);
