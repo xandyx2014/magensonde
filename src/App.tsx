@@ -31,6 +31,7 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
+import Tab4 from "./pages/formula1/tab4";
 
 const App: React.FC = () => (
   <IonApp>
@@ -40,6 +41,7 @@ const App: React.FC = () => (
           <Route exact path="/tab1" component={Tab1}></Route>
           <Route exact path="/tab2" component={Tab2}></Route>
           <Route exact path="/tab3" component={Tab3}></Route>
+          <Route exact path="/tab4" component={Tab4}></Route>
           <Route exact path="/">
             <Redirect to="/tab1" />
           </Route>
@@ -57,7 +59,7 @@ const App: React.FC = () => (
             <IonIcon icon={Icon.gitNetworkOutline} />
             <IonLabel>APACHE II</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="tab4" href="/tab4">
             <IonIcon icon={Icon.square} />
             <IonLabel>Formula 1</IonLabel>
           </IonTabButton>
