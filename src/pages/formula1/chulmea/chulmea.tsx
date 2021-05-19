@@ -17,10 +17,10 @@ import React, { useState } from "react";
 import { Genre } from "../../../enums/genre";
 import {
   ChulmeaData,
-  Context,
   ChulmeaHombres,
   ChulmeaMujeres,
-} from "../../../services/energyService";
+} from "../../../services/chulmeaAlturaStrategy";
+import { Context } from "../../../services/energyService";
 
 export const Chulmea: React.FC = React.memo(() => {
   const [chulmea, setChulmea] = useState(
@@ -89,7 +89,7 @@ export const Chulmea: React.FC = React.memo(() => {
       </IonItem>
       <IonItemDivider>Resultado</IonItemDivider>
       <IonItem>
-        <IonLabel>Resultado</IonLabel>
+        <IonLabel>Talla {gender === Genre.man ? "Hombre" : "Mujer"}</IonLabel>
         <IonBadge> {getTotal(altura, edad).toFixed(2)} cm</IonBadge>
       </IonItem>
     </IonList>

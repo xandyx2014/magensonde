@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
-import { IonContent, IonPage, IonButton, IonImg } from "@ionic/react";
-import {
-  barbellOutline,
-  accessibilityOutline,
-  heartOutline,
-} from "ionicons/icons";
+import React from "react";
+import { IonContent, IonPage, IonImg } from "@ionic/react";
 import workOutSvg from "../../assets/workout.svg";
 import { Chulmea } from "./chulmea/chulmea";
+import { Rabito } from "./rabito/rabito";
+import { ChulmeaPeso } from "./chulmea/chulmeaPeso";
 
 const Tab4: React.FC = () => {
   return (
@@ -25,6 +22,8 @@ const Tab4: React.FC = () => {
           src={workOutSvg}
         ></IonImg>
         <Chulmea></Chulmea>
+        <Rabito></Rabito>
+        <ChulmeaPeso />
       </IonContent>
     </IonPage>
   );
