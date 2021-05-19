@@ -91,7 +91,7 @@ export const ChulmeaPeso: React.FC = React.memo(() => {
         ></IonInput>
       </IonItem>
       <IonItem>
-        <IonLabel position="stacked">Pliegue subescapular mm</IonLabel>
+        <IonLabel position="stacked">Pliegue subescapular (mm)</IonLabel>
         <IonInput
           type="number"
           value={pliegueSubEscapular}

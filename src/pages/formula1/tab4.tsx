@@ -5,6 +5,7 @@ import workOutSvg from "../../assets/workout.svg";
 import { Chulmea } from "./chulmea/chulmea";
 import { Rabito } from "./rabito/rabito";
 import { ChulmeaPeso } from "./chulmea/chulmeaPeso";
+import { Hidrica } from "./hidrica/hidrica";
 
 const Tab4: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const Tab4: React.FC = () => {
         <Chulmea></Chulmea>
         <Rabito></Rabito>
         <ChulmeaPeso />
+        <Hidrica />
       </IonContent>
     </IonPage>
   );
