@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   IonCard,
   IonCardContent,
@@ -16,7 +17,7 @@ import React, { useState } from "react";
 import { ScreenSecond } from "../nrs2002/components/screen_second";
 import "./Tab2.css";
 
-const Tab2: React.FC = () => {
+export const Tab2: React.FC = () => {
   const [edad, setEdad] = useState(0);
   const [apache, setApache] = useState(0);
   const [sofa, setSofa] = useState(0);
@@ -244,5 +245,3 @@ const Tab2: React.FC = () => {
     </IonPage>
   );
 };
-
-export default Tab2;

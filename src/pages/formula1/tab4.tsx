@@ -7,7 +7,7 @@ import { Rabito } from "./rabito/rabito";
 import { ChulmeaPeso } from "./chulmea/chulmeaPeso";
 import { Hidrica } from "./hidrica/hidrica";
 
-const Tab4: React.FC = () => {
+export const Tab4: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="fade-in">
@@ -30,5 +30,3 @@ const Tab4: React.FC = () => {
     </IonPage>
   );
 };
-
-export default Tab4;

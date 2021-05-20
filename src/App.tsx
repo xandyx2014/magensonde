@@ -10,10 +10,7 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import * as Icon from "ionicons/icons";
-import Tab1 from "./pages/nrs2002/Tab1";
-import Tab2 from "./pages/nutric/Tab2";
-import Tab3 from "./pages/apache/Tab3";
-
+import { Tab1, Tab2, Tab3, Tab4, RequerimientoHidrico } from "./pages";
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 
@@ -31,7 +28,6 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
-import Tab4 from "./pages/formula1/tab4";
 
 const App: React.FC = () => (
   <IonApp>
@@ -42,6 +38,7 @@ const App: React.FC = () => (
           <Route exact path="/tab2" component={Tab2}></Route>
           <Route exact path="/tab3" component={Tab3}></Route>
           <Route exact path="/tab4" component={Tab4}></Route>
+          <Route exact path="/tab5" component={RequerimientoHidrico}></Route>
           <Route exact path="/">
             <Redirect to="/tab1" />
           </Route>
@@ -60,12 +57,12 @@ const App: React.FC = () => (
             <IonLabel>APACHE II</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab4" href="/tab4">
-            <IonIcon icon={Icon.square} />
-            <IonLabel>Formula 1</IonLabel>
+            <IonIcon icon={Icon.heartOutline} />
+            <IonLabel>Peso y talla</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={Icon.square} />
-            <IonLabel>Formula 2</IonLabel>
+          <IonTabButton tab="tab5" href="/tab5">
+            <IonIcon icon={Icon.leafOutline} />
+            <IonLabel>Req. Energetico</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

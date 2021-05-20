@@ -18,7 +18,7 @@ import Mouth from "../../assets/mouth.png";
 import Hand from "../../assets/hand.png";
 import { useState } from "react";
 import "./Tab3.css";
-const Tab3: React.FC = () => {
+export const Tab3: React.FC = () => {
   const [temperatura, setTemperatura] = useState(0);
   const [presion, setPresion] = useState(0);
   const [cardiaca, setCardiaca] = useState(0);
@@ -895,5 +895,3 @@ const Tab3: React.FC = () => {
     </IonPage>
   );
 };
-
-export default Tab3;

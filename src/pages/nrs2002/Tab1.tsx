@@ -17,7 +17,7 @@ import {
 import { ScreenInitial } from "./components/screen_initial";
 import { ScreenSecond } from "./components/screen_second";
 
-const Tab1: React.FC = () => {
+export const Tab1: React.FC = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [screen1, setScreen1] = useState("false");
   const [screen2, setScreen2] = useState("false");
@@ -324,5 +324,3 @@ const Tab1: React.FC = () => {
     </IonPage>
   );
 };
-
-export default Tab1;
