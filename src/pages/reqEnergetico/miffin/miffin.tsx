@@ -29,7 +29,6 @@ export const Miffin: React.FC = React.memo(() => {
   const {
     addGenre,
     addMiffin,
-    miffin: MiffinContext,
     genre: genreContex,
   } = useContext(RequerimientoContext);
   const [miffin, setChulmea] = useState(
@@ -43,9 +42,10 @@ export const Miffin: React.FC = React.memo(() => {
   };
   const getTotal = (value: MiffinData) => {
     const total = miffin.calculate({ ...value });
+    addMiffin(Number(total));
     return total;
   };
-  const miffinTotalContext = () => {
+  /* const miffinTotalContext = () => {
     // console.log("Context", genreContex);
     const total = getTotal({
       edad: edad,
@@ -53,10 +53,11 @@ export const Miffin: React.FC = React.memo(() => {
       talla: talla,
     }).toFixed(2);
     addMiffin(Number(total));
-  };
-  useEffect(() => {
+  }; */
+  /* useEffect(() => {
+    console.log("Context genre", genreContex);
     miffinTotalContext();
-  }, [talla, edad, peso, genreContex]);
+  }, [genreContex, talla, edad, peso]); */
 
   return (
     <IonList>
@@ -71,8 +72,9 @@ export const Miffin: React.FC = React.memo(() => {
           okText="Aceptar"
           cancelText="Cancelar"
           onIonChange={(e: any) => {
-            addGenre(e.target.value);
             console.log("input ", e.target.value);
+            addGenre(e.target.value);
+
             const chulmeaGenre = setMiffin(genreContex);
             setChulmea(new Context<MiffinData, number>(chulmeaGenre));
           }}
@@ -125,7 +127,14 @@ export const Miffin: React.FC = React.memo(() => {
         <IonLabel>
           Requerimiento {genreContex === Genre.man ? "Hombre" : "Mujer"}
         </IonLabel>
-        <IonBadge>{Number(MiffinContext)} kcal/d</IonBadge>
+        <IonBadge>
+          {getTotal({
+            edad: edad,
+            peso: peso,
+            talla: talla,
+          })}{" "}
+          kcal/d
+        </IonBadge>
       </IonItem>
     </IonList>
   );

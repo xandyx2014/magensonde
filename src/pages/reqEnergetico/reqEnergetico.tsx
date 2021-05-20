@@ -7,23 +7,28 @@ import React, { useEffect, useState } from "react";
 import Home from "../../assets/home.svg";
 import { Genre } from "../../enums/genre";
 import { FactorActividad } from "./factorActividad/factorActividad";
+import { FactorAgresion } from "./factorAgresion/factorAgresion";
 import { Miffin } from "./miffin/miffin";
 import { Penn } from "./penn/penn";
 export const RequerimientoContext = React.createContext({
   genre: Genre.man,
   miffin: 0,
   factorActividad: 0,
-  addFactorActividad: (value: number) => {},
-  addGenre: (genre: Genre) => {},
-  addMiffin: (value: number) => {},
+  factorAgresion: 0,
+  addFactorActividad: (_value: number) => {},
+  addFactorAgresion: (_value: number) => {},
+  addGenre: (_genre: Genre) => {},
+  addMiffin: (_value: number) => {},
 });
 export const RequerimientoHidrico: React.FC = () => {
   const [miffin, setMiffin] = useState<number>(0);
   const [genre, setGenre] = useState(Genre.man);
   const [factorActivida, setFactorActividad] = useState(0);
+  const [factorAgresion, setFactorAgresion] = useState(0);
   const addGenre = (genre: Genre): void => setGenre(genre);
   const addMiffin = (value: number): void => setMiffin(value);
   const addFactorActividad = (value: number): void => setFactorActividad(value);
+  const addFactorAgresion = (value: number): void => setFactorAgresion(value);
   useEffect(() => {
     // console.log("Genre", genre);
   }, [genre]);
@@ -34,7 +39,9 @@ export const RequerimientoHidrico: React.FC = () => {
           genre: genre,
           miffin: miffin,
           factorActividad: factorActivida,
+          factorAgresion: factorAgresion,
           addFactorActividad,
+          addFactorAgresion,
           addGenre,
           addMiffin,
         }}
@@ -54,6 +61,7 @@ export const RequerimientoHidrico: React.FC = () => {
           <Miffin></Miffin>
           <Penn></Penn>
           <FactorActividad></FactorActividad>
+          <FactorAgresion></FactorAgresion>
         </IonContent>
       </RequerimientoContext.Provider>
     </IonPage>

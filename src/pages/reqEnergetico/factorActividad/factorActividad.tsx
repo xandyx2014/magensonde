@@ -54,7 +54,7 @@ export const FactorActividad: React.FC = () => {
       </IonItem>
       <IonItem>
         <IonLabel>valor: </IonLabel>
-        <IonBadge>{factorActividadContext} Kcal</IonBadge>
+        <IonBadge>{Number(factorActividadContext).toFixed(2)} Kcal</IonBadge>
       </IonItem>
     </IonList>
   );
