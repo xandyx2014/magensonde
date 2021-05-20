@@ -8,7 +8,7 @@ import {
   IonSelect,
   IonSelectOption,
 } from "@ionic/react";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { RequerimientoContext } from "../reqEnergetico";
 
 export enum Actividad {
@@ -32,29 +32,40 @@ export const FactorActividad: React.FC = () => {
     <IonList>
       <IonItem>
         <IonLabel>Factor de actividad</IonLabel>
-        <IonSelect
-          interface="popover"
-          value={factorActivida}
-          okText="Aceptar"
-          cancelText="Cancelar"
-          onIonChange={(e: any) => {
-            setFactorActivida(e.target.value);
-          }}
-        >
-          <IonSelectOption value={Actividad.reposoCama}>
-            Reposo en cama
-          </IonSelectOption>
-          <IonSelectOption value={Actividad.movimientoCama}>
-            Movimiento en cama
-          </IonSelectOption>
-          <IonSelectOption value={Actividad.deambular}>
-            Deambular
-          </IonSelectOption>
-        </IonSelect>
+        {useMemo(
+          () => (
+            <IonSelect
+              interface="popover"
+              value={factorActivida}
+              okText="Aceptar"
+              cancelText="Cancelar"
+              onIonChange={(e: any) => {
+                setFactorActivida(e.target.value);
+              }}
+            >
+              <IonSelectOption value={Actividad.reposoCama}>
+                Reposo en cama
+              </IonSelectOption>
+              <IonSelectOption value={Actividad.movimientoCama}>
+                Movimiento en cama
+              </IonSelectOption>
+              <IonSelectOption value={Actividad.deambular}>
+                Deambular
+              </IonSelectOption>
+            </IonSelect>
+          ),
+          [factorActivida]
+        )}
       </IonItem>
       <IonItem>
         <IonLabel>valor: </IonLabel>
-        <IonBadge>{Number(factorActividadContext).toFixed(2)} Kcal</IonBadge>
+        <IonBadge>
+          {useMemo(
+            () => Number(factorActividadContext).toFixed(2),
+            [factorActividadContext]
+          )}{" "}
+          Kcal
+        </IonBadge>
       </IonItem>
     </IonList>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   IonList,
@@ -12,7 +13,7 @@ import {
   IonText,
   IonBadge,
 } from "@ionic/react";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Genre } from "../../../enums/genre";
 import { Context } from "../../../services/energyService";
 import {
@@ -44,69 +45,94 @@ export const Rabito: React.FC = React.memo(() => {
       </IonItemDivider>
       <IonItem>
         <IonLabel>Genero</IonLabel>
-        <IonSelect
-          interface="popover"
-          value={gender}
-          okText="Aceptar"
-          cancelText="Cancelar"
-          onIonChange={(e: any) => {
-            setGender(e.target.value);
-            const rabitoGenre = setRabitoGenre(e.target.value);
-            console.log(rabitoGenre);
-            return setChulmea(new Context<RabitoData, number>(rabitoGenre));
-          }}
-        >
-          <IonSelectOption value={Genre.man}>Hombre</IonSelectOption>
-          <IonSelectOption value={Genre.woman}>Mujer</IonSelectOption>
-        </IonSelect>
+        {useMemo(
+          () => (
+            <IonSelect
+              interface="popover"
+              value={gender}
+              okText="Aceptar"
+              cancelText="Cancelar"
+              onIonChange={(e: any) => {
+                setGender(e.target.value);
+                const rabitoGenre = setRabitoGenre(e.target.value);
+                console.log(rabitoGenre);
+                return setChulmea(new Context<RabitoData, number>(rabitoGenre));
+              }}
+            >
+              <IonSelectOption value={Genre.man}>Hombre</IonSelectOption>
+              <IonSelectOption value={Genre.woman}>Mujer</IonSelectOption>
+            </IonSelect>
+          ),
+          [gender]
+        )}
       </IonItem>
-      <IonItem>
-        <IonLabel position="stacked">Circuferencia brazon cm</IonLabel>
-        <IonInput
-          type="number"
-          value={brazo}
-          pattern={"[0-9]"}
-          placeholder="Enter Number"
-          onIonChange={(e: any) => {
-            setBrazo(Number(e.target.value));
-          }}
-        ></IonInput>
-      </IonItem>
-      <IonItem>
-        <IonLabel position="stacked">Circuferencia abdominal cm</IonLabel>
-        <IonInput
-          type="number"
-          value={abdominal}
-          pattern={"[0-9]"}
-          placeholder="Enter Number"
-          onIonChange={(e: any) => {
-            setAbdominal(Number(e.target.value));
-          }}
-        ></IonInput>
-      </IonItem>
-      <IonItem>
-        <IonLabel position="stacked">Circuferencia pantorilla cm</IonLabel>
-        <IonInput
-          type="number"
-          value={pantorilla}
-          pattern={"[0-9]"}
-          placeholder="Enter Number"
-          onIonChange={(e: any) => {
-            setPantorilla(Number(e.target.value));
-          }}
-        ></IonInput>
-      </IonItem>
+      {useMemo(
+        () => (
+          <IonItem>
+            <IonLabel position="stacked">Circuferencia brazon cm</IonLabel>
+            <IonInput
+              type="number"
+              value={brazo}
+              pattern={"[0-9]"}
+              placeholder="Enter Number"
+              onIonChange={(e: any) => {
+                setBrazo(Number(e.target.value));
+              }}
+            ></IonInput>
+          </IonItem>
+        ),
+        [brazo]
+      )}
+      {useMemo(
+        () => (
+          <IonItem>
+            <IonLabel position="stacked">Circuferencia abdominal cm</IonLabel>
+            <IonInput
+              type="number"
+              value={abdominal}
+              pattern={"[0-9]"}
+              placeholder="Enter Number"
+              onIonChange={(e: any) => {
+                setAbdominal(Number(e.target.value));
+              }}
+            ></IonInput>
+          </IonItem>
+        ),
+        [abdominal]
+      )}
+      {useMemo(
+        () => (
+          <IonItem>
+            <IonLabel position="stacked">Circuferencia pantorilla cm</IonLabel>
+            <IonInput
+              type="number"
+              value={pantorilla}
+              pattern={"[0-9]"}
+              placeholder="Enter Number"
+              onIonChange={(e: any) => {
+                setPantorilla(Number(e.target.value));
+              }}
+            ></IonInput>
+          </IonItem>
+        ),
+        [pantorilla]
+      )}
       <IonItemDivider>Resultado</IonItemDivider>
       <IonItem>
         <IonLabel>
-          Peso estimado {gender === Genre.man ? "Hombre" : "Mujer"}
+          Peso estimado{" "}
+          {useMemo(() => (gender === Genre.man ? "Hombre" : "Mujer"), [gender])}
         </IonLabel>
         <IonBadge>
-          {getTotal({
-            circuferenciaBrazo: brazo,
-            circuferenciaAbdominal: abdominal,
-            circuferenciaPantorilla: pantorilla,
-          }).toFixed(2)}
+          {useMemo(
+            () =>
+              getTotal({
+                circuferenciaBrazo: brazo,
+                circuferenciaAbdominal: abdominal,
+                circuferenciaPantorilla: pantorilla,
+              }).toFixed(2),
+            [brazo, abdominal, pantorilla]
+          )}
         </IonBadge>
       </IonItem>
     </IonList>

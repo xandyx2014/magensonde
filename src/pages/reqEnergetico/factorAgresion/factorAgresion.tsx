@@ -8,7 +8,7 @@ import {
   IonSelect,
   IonSelectOption,
 } from "@ionic/react";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { RequerimientoContext } from "../reqEnergetico";
 
 export enum Agresion {
@@ -35,28 +35,41 @@ export const FactorAgresion: React.FC = () => {
     <IonList>
       <IonItem>
         <IonLabel>Factor de agresion</IonLabel>
-        <IonSelect
-          interface="popover"
-          value={factorAgresion}
-          okText="Aceptar"
-          cancelText="Cancelar"
-          onIonChange={(e: any) => {
-            setFactorAgresion(e.target.value);
-          }}
-        >
-          <IonSelectOption value={Agresion.cirugiaProgramada}>
-            Cirugia Programada
-          </IonSelectOption>
-          <IonSelectOption value={Agresion.traumatismo}>
-            traumatismo
-          </IonSelectOption>
-          <IonSelectOption value={Agresion.sepsis}>Sepsis</IonSelectOption>
-          <IonSelectOption value={Agresion.quemados}>Quemados</IonSelectOption>
-        </IonSelect>
+        {useMemo(
+          () => (
+            <IonSelect
+              interface="popover"
+              value={factorAgresion}
+              okText="Aceptar"
+              cancelText="Cancelar"
+              onIonChange={(e: any) => {
+                setFactorAgresion(e.target.value);
+              }}
+            >
+              <IonSelectOption value={Agresion.cirugiaProgramada}>
+                Cirugia Programada
+              </IonSelectOption>
+              <IonSelectOption value={Agresion.traumatismo}>
+                traumatismo
+              </IonSelectOption>
+              <IonSelectOption value={Agresion.sepsis}>Sepsis</IonSelectOption>
+              <IonSelectOption value={Agresion.quemados}>
+                Quemados
+              </IonSelectOption>
+            </IonSelect>
+          ),
+          [factorAgresion]
+        )}
       </IonItem>
       <IonItem>
         <IonLabel>Req. Energetico Paciente: </IonLabel>
-        <IonBadge>{Number(factorAgresionContext).toFixed(2)} Kcal</IonBadge>
+        <IonBadge>
+          {useMemo(
+            () => Number(factorAgresionContext).toFixed(2),
+            [factorAgresionContext]
+          )}{" "}
+          Kcal
+        </IonBadge>
       </IonItem>
     </IonList>
   );
