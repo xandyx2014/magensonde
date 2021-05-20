@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   IonList,
@@ -8,9 +9,10 @@ import {
   IonBadge,
   IonSelect,
   IonSelectOption,
+  IonImg,
 } from "@ionic/react";
-import React, { useState } from "react";
-
+import React, { useCallback, useState } from "react";
+import waterSvg from "../../../assets/water.svg";
 export const Hidrica: React.FC = () => {
   const [peso, setPeso] = useState<number>(0);
   const [fiebre, setFiebre] = useState<boolean>(false);
@@ -21,10 +23,25 @@ export const Hidrica: React.FC = () => {
     }
     return result;
   };
+  const pesoCallback = useCallback((e) => {
+    setPeso(Number(e.target.value));
+  }, []);
+
   return (
     <>
       <IonList>
         <IonItemDivider>Necesidades hidricas</IonItemDivider>
+        <IonImg
+          style={{
+            width: "10em",
+            hegiht: "10em",
+            display: "auto",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "10px",
+          }}
+          src={waterSvg}
+        ></IonImg>
         <IonItem>
           <IonLabel position="stacked">Peso en (Kg)</IonLabel>
           <IonInput
@@ -32,11 +49,10 @@ export const Hidrica: React.FC = () => {
             value={peso}
             pattern={"[0-9]"}
             placeholder="Peso en kg"
-            onIonChange={(e: any) => {
-              setPeso(Number(e.target.value));
-            }}
+            onIonChange={pesoCallback}
           ></IonInput>
         </IonItem>
+
         <IonItem>
           <IonLabel>Estado de salud</IonLabel>
           <IonSelect
