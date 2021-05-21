@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   IonContent,
   IonText,
@@ -13,10 +13,16 @@ import {
   IonModal,
   useIonAlert,
   IonInput,
+  IonButtons,
+  IonHeader,
+  IonMenuButton,
+  IonTitle,
+  IonToolbar,
+  IonImg,
 } from "@ionic/react";
 import { ScreenInitial } from "./components/screen_initial";
 import { ScreenSecond } from "./components/screen_second";
-
+import workOutSvg from "../../assets/nsr2002.svg";
 export const Tab1: React.FC = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [screen1, setScreen1] = useState("false");
@@ -45,7 +51,32 @@ export const Tab1: React.FC = () => {
   };
   return (
     <IonPage>
-      <IonContent className="fade-in">
+      <IonHeader className="ion-no-border">
+        <IonToolbar className="ion-no-border">
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>NRS 2002</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen={true}>
+        {useMemo(
+          () => (
+            <IonImg
+              className="fade-in"
+              style={{
+                width: "10em",
+                hegiht: "10em",
+                display: "auto",
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginTop: "10px",
+              }}
+              src={workOutSvg}
+            ></IonImg>
+          ),
+          []
+        )}
         <IonList>
           <IonItemDivider>Nutritional Risk Screening (NRS-2002)</IonItemDivider>
           <ScreenInitial

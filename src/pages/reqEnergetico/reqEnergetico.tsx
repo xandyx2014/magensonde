@@ -2,7 +2,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { IonPage, IonContent, IonImg } from "@ionic/react";
+import {
+  IonPage,
+  IonContent,
+  IonImg,
+  IonButtons,
+  IonHeader,
+  IonMenuButton,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
 import React, { useEffect, useMemo, useState } from "react";
 import Home from "../../assets/home.svg";
 import { Genre } from "../../enums/genre";
@@ -34,6 +43,14 @@ export const RequerimientoHidrico: React.FC = () => {
   }, [genre]);
   return (
     <IonPage>
+      <IonHeader className="ion-no-border">
+        <IonToolbar className="ion-no-border">
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>Req. Energetico</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <RequerimientoContext.Provider
         value={{
           genre: genre,
@@ -46,10 +63,11 @@ export const RequerimientoHidrico: React.FC = () => {
           addMiffin,
         }}
       >
-        <IonContent className="fade-in">
+        <IonContent fullscreen={true}>
           {useMemo(
             () => (
               <IonImg
+                className="fade-in"
                 style={{
                   width: "10em",
                   hegiht: "10em",

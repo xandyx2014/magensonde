@@ -1,22 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonContent,
+  IonHeader,
+  IonImg,
   IonItem,
   IonItemDivider,
   IonLabel,
   IonList,
+  IonMenuButton,
   IonPage,
   IonSelect,
   IonSelectOption,
   IonText,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { ScreenSecond } from "../nrs2002/components/screen_second";
 import "./Tab2.css";
-
+import NutricImg from "../../assets/nutric.svg";
 export const Tab2: React.FC = () => {
   const [edad, setEdad] = useState(0);
   const [apache, setApache] = useState(0);
@@ -30,7 +36,32 @@ export const Tab2: React.FC = () => {
   };
   return (
     <IonPage>
-      <IonContent fullscreen>
+      <IonHeader className="ion-no-border">
+        <IonToolbar className="ion-no-border">
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>NRS 2002</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen={true}>
+        {useMemo(
+          () => (
+            <IonImg
+              className="fade-in"
+              style={{
+                width: "10em",
+                hegiht: "10em",
+                display: "auto",
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginTop: "10px",
+              }}
+              src={NutricImg}
+            ></IonImg>
+          ),
+          []
+        )}
         <IonItemDivider>NUTRIC.</IonItemDivider>
         <IonCard mode="ios">
           <IonCardHeader>Edad</IonCardHeader>

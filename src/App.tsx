@@ -1,17 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Redirect, Route } from "react-router-dom";
-import React from "react";
+import React, { useMemo } from "react";
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
+  IonContent,
   IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
+  IonSplitPane,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import * as Icon from "ionicons/icons";
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 
@@ -29,6 +25,7 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
+import Menu from "./components/menu";
 // Tab2, Tab3, Tab4, RequerimientoHidrico
 const Tab1 = React.lazy(() =>
   import("./pages").then((module) => ({ default: module.Tab1 }))
@@ -45,13 +42,30 @@ const Tab4 = React.lazy(() =>
 const RequerimientoHidrico = React.lazy(() =>
   import("./pages").then((module) => ({ default: module.RequerimientoHidrico }))
 );
-
+const Home = React.lazy(() =>
+  import("./pages").then((module) => ({ default: module.Home }))
+);
 const App: React.FC = () => (
   <IonApp>
-    <React.Suspense fallback={<p>Loading</p>}>
+    <React.Suspense
+      fallback={
+        <IonApp>
+          {" "}
+          <IonContent>
+            <p>...</p>
+          </IonContent>
+        </IonApp>
+      }
+    >
       <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
+        <IonSplitPane contentId="main">
+          {useMemo(
+            () => (
+              <Menu />
+            ),
+            []
+          )}
+          <IonRouterOutlet id="main">
             <Route
               exact
               path="/tab1"
@@ -61,33 +75,12 @@ const App: React.FC = () => (
             <Route exact path="/tab3" component={Tab3}></Route>
             <Route exact path="/tab4" component={Tab4}></Route>
             <Route exact path="/tab5" component={RequerimientoHidrico}></Route>
+            <Route exact path="/home" component={Home}></Route>
             <Route exact path="/">
-              <Redirect to="/tab1" />
+              <Redirect to="/home" />
             </Route>
           </IonRouterOutlet>
-          <IonTabBar className="fade-in" slot="bottom" color="light" mode="ios">
-            <IonTabButton tab="tab1" href="/tab1">
-              <IonIcon icon={Icon.calculatorOutline} />
-              <IonLabel>NRS2002</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab2" href="/tab2">
-              <IonIcon icon={Icon.cubeOutline} />
-              <IonLabel>Nutric</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab3" href="/tab3">
-              <IonIcon icon={Icon.gitNetworkOutline} />
-              <IonLabel>APACHE II</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab4" href="/tab4">
-              <IonIcon icon={Icon.heartOutline} />
-              <IonLabel>Peso y talla</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab5" href="/tab5">
-              <IonIcon icon={Icon.leafOutline} />
-              <IonLabel>Req. Energetico</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
+        </IonSplitPane>
       </IonReactRouter>
     </React.Suspense>
   </IonApp>

@@ -1,14 +1,20 @@
 import {
   IonBadge,
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonContent,
+  IonHeader,
+  IonImg,
   IonItem,
   IonItemDivider,
   IonLabel,
   IonList,
+  IonMenuButton,
   IonPage,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
 import { ScreenSecond } from "../nrs2002/components/screen_second";
 import inRangue from "lodash.inrange";
@@ -16,8 +22,9 @@ import { Pie } from "react-chartjs-2";
 import Eyes from "../../assets/eyes.png";
 import Mouth from "../../assets/mouth.png";
 import Hand from "../../assets/hand.png";
-import { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "./Tab3.css";
+import ApacheImg from "../../assets/apache.svg";
 export const Tab3: React.FC = () => {
   const [temperatura, setTemperatura] = useState(0);
   const [presion, setPresion] = useState(0);
@@ -66,7 +73,32 @@ export const Tab3: React.FC = () => {
   };
   return (
     <IonPage>
-      <IonContent fullscreen>
+      <IonHeader className="ion-no-border">
+        <IonToolbar className="ion-no-border">
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>Apache II</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen={true}>
+        {useMemo(
+          () => (
+            <IonImg
+              className="fade-in"
+              style={{
+                width: "10em",
+                hegiht: "10em",
+                display: "auto",
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginTop: "10px",
+              }}
+              src={ApacheImg}
+            ></IonImg>
+          ),
+          []
+        )}
         <IonItemDivider>APACHE II.</IonItemDivider>
         <IonCard mode="ios">
           <IonCardHeader>Temperatura rectal (*c)</IonCardHeader>
