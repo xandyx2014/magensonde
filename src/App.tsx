@@ -45,6 +45,9 @@ const RequerimientoHidrico = React.lazy(() =>
 const Home = React.lazy(() =>
   import("./pages").then((module) => ({ default: module.Home }))
 );
+const RegistroPaciente = React.lazy(() =>
+  import("./pages").then((module) => ({ default: module.RegistroPaciente }))
+);
 const App: React.FC = () => (
   <IonApp>
     <React.Suspense
@@ -75,6 +78,11 @@ const App: React.FC = () => (
             <Route exact path="/tab3" component={Tab3}></Route>
             <Route exact path="/tab4" component={Tab4}></Route>
             <Route exact path="/tab5" component={RequerimientoHidrico}></Route>
+            <Route
+              exact
+              path="/registroPaciente"
+              component={RegistroPaciente}
+            ></Route>
             <Route exact path="/home" component={Home}></Route>
             <Route exact path="/">
               <Redirect to="/home" />
