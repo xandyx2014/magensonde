@@ -16,6 +16,7 @@ import {
   IonList,
   IonMenuButton,
   IonPage,
+  IonText,
   IonTitle,
   IonToolbar,
   useIonAlert,
@@ -147,65 +148,71 @@ export const RegistroPaciente: React.FC = () => {
             <IonIcon icon={add} />
           </IonFabButton>
         </IonFab>
-        {pacientes.map((e, index) => {
-          return (
-            <IonCard
-              key={index}
-              mode="md"
-              className="ion-activatable ripple-parent"
-            >
-              <IonCardContent>
-                <IonCardSubtitle>Datos del paciente</IonCardSubtitle>
-                <IonList>
-                  <IonItem>
-                    <IonLabel>
-                      <h3>Nombre: </h3>
-                      <p>{e.nombre}</p>
-                      <h3>Carnet Identidad: </h3>
-                      <p>{e.carnetIdentidad}</p>
-                      <h3>Numero de cama: </h3>
-                      <p>{e.numeroCama}</p>
-                      <h3>Numero de piso: </h3>
-                      <p>{e.numeroPiso}</p>
-                      <h3>Fecha: </h3>
-                      <p>
-                        {format(
-                          new Date(String(e.fecha)),
-                          "MM/dd/yyyy H:mm:SS"
-                        )}
-                      </p>
-                    </IonLabel>
-                  </IonItem>
-                </IonList>
-                <IonButton
-                  onClick={() => {
-                    present({
-                      cssClass: "my-css",
-                      header: "Confirmar",
-                      message: "¿Estas seguro de eliminar?",
-                      buttons: [
-                        "Cancel",
-                        {
-                          text: "Ok",
-                          handler: async (d) => {
-                            pacienteService.deleteById(Number(e.id));
-                            upgradeDb();
+        {pacientes.length === 0 ? (
+          <IonText className="ion-padding" color="medium">
+            No hay pacientes registrado aun 😢
+          </IonText>
+        ) : (
+          pacientes.map((e, index) => {
+            return (
+              <IonCard
+                key={index}
+                mode="md"
+                className="ion-activatable ripple-parent"
+              >
+                <IonCardContent>
+                  <IonCardSubtitle>Datos del paciente</IonCardSubtitle>
+                  <IonList>
+                    <IonItem>
+                      <IonLabel>
+                        <h3>Nombre: </h3>
+                        <p>{e.nombre}</p>
+                        <h3>Carnet Identidad: </h3>
+                        <p>{e.carnetIdentidad}</p>
+                        <h3>Numero de cama: </h3>
+                        <p>{e.numeroCama}</p>
+                        <h3>Numero de piso: </h3>
+                        <p>{e.numeroPiso}</p>
+                        <h3>Fecha: </h3>
+                        <p>
+                          {format(
+                            new Date(String(e.fecha)),
+                            "MM/dd/yyyy H:mm:SS"
+                          )}
+                        </p>
+                      </IonLabel>
+                    </IonItem>
+                  </IonList>
+                  <IonButton
+                    onClick={() => {
+                      present({
+                        cssClass: "my-css",
+                        header: "Confirmar",
+                        message: "¿Estas seguro de eliminar?",
+                        buttons: [
+                          "Cancel",
+                          {
+                            text: "Ok",
+                            handler: async (d) => {
+                              pacienteService.deleteById(Number(e.id));
+                              upgradeDb();
+                            },
                           },
-                        },
-                      ],
-                      onDidDismiss: (e) => console.log("did dismiss"),
-                    });
-                  }}
-                  expand="full"
-                  fill="clear"
-                >
-                  <IonIcon slot="start" icon={trashOutline} />
-                  Eliminar
-                </IonButton>
-              </IonCardContent>
-            </IonCard>
-          );
-        })}
+                        ],
+                        onDidDismiss: (e) => console.log("did dismiss"),
+                      });
+                    }}
+                    expand="full"
+                    fill="clear"
+                  >
+                    <IonIcon slot="start" icon={trashOutline} />
+                    Eliminar
+                  </IonButton>
+                </IonCardContent>
+              </IonCard>
+            );
+          })
+        )}
       </IonContent>
     </IonPage>
   );
