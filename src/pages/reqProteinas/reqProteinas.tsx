@@ -13,9 +13,6 @@ import {
   IonInput,
   IonSelect,
   IonSelectOption,
-  IonRange,
-  IonIcon,
-  IonText,
   IonBadge,
 } from "@ionic/react";
 import React, { useMemo, useState } from "react";

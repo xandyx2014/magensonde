@@ -1,6 +1,7 @@
 import {
   IonContent,
   IonIcon,
+  IonImg,
   IonItem,
   IonLabel,
   IonList,
@@ -9,7 +10,7 @@ import {
   IonMenuToggle,
   IonNote,
 } from "@ionic/react";
-
+import NutricImg from "../assets/logo_ueb.png";
 import { useLocation } from "react-router-dom";
 import {
   calculatorOutline,
@@ -22,6 +23,7 @@ import {
   beakerOutline,
 } from "ionicons/icons";
 import "./menu.css";
+import { useMemo } from "react";
 
 interface AppPage {
   url: string;
@@ -88,6 +90,22 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
+          {useMemo(
+            () => (
+              <IonImg
+                className="fade-in"
+                style={{
+                  height: "6em",
+                  display: "auto",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  marginTop: "10px",
+                }}
+                src={NutricImg}
+              ></IonImg>
+            ),
+            []
+          )}
           <IonListHeader>Magensonde</IonListHeader>
           <IonNote>Universidad evangelica boliviana</IonNote>
           {appPages.map((appPage, index) => {
