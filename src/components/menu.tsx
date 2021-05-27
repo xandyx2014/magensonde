@@ -19,6 +19,7 @@ import {
   leafOutline,
   homeOutline,
   people,
+  beakerOutline,
 } from "ionicons/icons";
 import "./menu.css";
 
@@ -65,6 +66,12 @@ export const appPages: AppPage[] = [
     url: "/tab5",
     iosIcon: leafOutline,
     mdIcon: leafOutline,
+  },
+  {
+    title: "Req. Proteinas",
+    url: "/reqProteinas",
+    iosIcon: beakerOutline,
+    mdIcon: beakerOutline,
   },
   {
     title: "Reg. Paciente",

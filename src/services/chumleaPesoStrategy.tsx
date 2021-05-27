@@ -12,7 +12,8 @@ export class ChumleaPesoHombres implements Strategy<ChumleaPesoData, number> {
       1.73 * value.circunferenciaBrazo +
       0.98 * value.circunferenciaPantorilla +
       0.37 * value.pliegueSubescapular +
-      1.16 * value.alturaTalonRodilla
+      1.16 * value.alturaTalonRodilla -
+      81.69
     );
   }
 }
@@ -22,7 +23,8 @@ export class ChumleaPesoMujeres implements Strategy<ChumleaPesoData, number> {
       0.98 * value.circunferenciaBrazo +
       1.27 * value.circunferenciaPantorilla +
       0.4 * value.pliegueSubescapular +
-      0.87 * value.alturaTalonRodilla
+      0.87 * value.alturaTalonRodilla -
+      62.35
     );
   }
 }

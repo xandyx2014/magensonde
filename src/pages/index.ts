@@ -5,3 +5,4 @@ export { Tab2 } from "./nutric/Tab2";
 export { RequerimientoHidrico } from "./reqEnergetico/reqEnergetico";
 export { Home } from "./home/home";
 export { RegistroPaciente } from "./registroPaciente/registroPaciente";
+export { ReqProteinas } from "./reqProteinas/reqProteinas";

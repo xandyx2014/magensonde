@@ -68,7 +68,7 @@ export const FactorAgresion: React.FC = () => {
             () => Number(factorAgresionContext).toFixed(2),
             [factorAgresionContext]
           )}{" "}
-          Kcal
+          gr
         </IonBadge>
       </IonItem>
     </IonList>
