@@ -42,13 +42,12 @@ export const ReqProteinas: React.FC = () => {
   const [enfermedad, setEnfermedad] = useState(
     Enfermedad.recomendacionDietetica
   );
-  const [condicion, setCondicion] = useState(0);
   const [peso, setPeso] = useState(0);
   const [condicionEnfermedad, setCondicionEnfermedad] = useState(
     defaultValueEnfermedad[Enfermedad.recomendacionDietetica]
   );
   const requerimientoProteina = () => {
-    return (condicion * condicionEnfermedad * peso).toFixed(2);
+    return (condicionEnfermedad * peso).toFixed(2);
   };
   const resultEnfermedad = (enfermedad: Enfermedad) => {
     const resultComponent: any = {
@@ -166,25 +165,7 @@ export const ReqProteinas: React.FC = () => {
           ),
           []
         )}
-        {useMemo(
-          () => (
-            <IonItem>
-              <IonLabel position="stacked">
-                Condicion clinica (Gr/Kg/Dia)
-              </IonLabel>
-              <IonInput
-                type="number"
-                value={condicion}
-                pattern={"[0-9]"}
-                placeholder="Enter Number"
-                onIonChange={(e: any) => {
-                  setCondicion(Number(e.target.value));
-                }}
-              ></IonInput>
-            </IonItem>
-          ),
-          [condicion]
-        )}
+
         {useMemo(
           () => (
             <IonItem>

@@ -51,6 +51,9 @@ const RegistroPaciente = React.lazy(() =>
 const ReqProteinas = React.lazy(() =>
   import("./pages").then((module) => ({ default: module.ReqProteinas }))
 );
+const Imc = React.lazy(() =>
+  import("./pages").then((module) => ({ default: module.Imc }))
+);
 const App: React.FC = () => (
   <IonApp>
     <React.Suspense
@@ -80,6 +83,7 @@ const App: React.FC = () => (
             <Route exact path="/tab2" component={Tab2}></Route>
             <Route exact path="/tab3" component={Tab3}></Route>
             <Route exact path="/tab4" component={Tab4}></Route>
+            <Route exact path="/imc" component={Imc}></Route>
             <Route exact path="/tab5" component={RequerimientoHidrico}></Route>
             <Route exact path="/ReqProteinas" component={ReqProteinas}></Route>
             <Route

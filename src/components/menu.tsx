@@ -20,6 +20,7 @@ import {
   leafOutline,
   homeOutline,
   people,
+  personAddSharp,
   beakerOutline,
 } from "ionicons/icons";
 import "./menu.css";
@@ -34,7 +35,7 @@ interface AppPage {
 
 export const appPages: AppPage[] = [
   {
-    title: "Hogar",
+    title: "Inicio",
     url: "/home",
     iosIcon: homeOutline,
     mdIcon: homeOutline,
@@ -80,6 +81,12 @@ export const appPages: AppPage[] = [
     url: "/registroPaciente",
     iosIcon: people,
     mdIcon: people,
+  },
+  {
+    title: "IMC",
+    url: "/imc",
+    iosIcon: personAddSharp,
+    mdIcon: personAddSharp,
   },
 ];
 
